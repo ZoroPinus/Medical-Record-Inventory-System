@@ -1,0 +1,284 @@
+<style>
+    /* Hide the original checkbox */
+    /* Style the fake checkbox */
+    .styled-checkboxgreen {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #ccc;
+        border-radius: 3px;
+        margin-right: 10px;
+    }
+
+    .styled-checkboxgreen {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border-radius: 3px;
+        margin-right: 10px;
+    }
+
+    /* Style the checkmark */
+    .styled-checkboxgreen::after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 6px;
+        top: 2px;
+        width: 8px;
+        height: 13px;
+        border: solid green;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    /* Show the checkmark when the checkbox is checked */
+    input[type="checkbox"]:checked+.styled-checkboxgreen::after {
+        display: block;
+    }
+
+
+    /* Style the fake checkbox */
+    .styled-checkboxred {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #ccc;
+        border-radius: 3px;
+        margin-right: 10px;
+    }
+
+    .styled-checkboxred {
+        position: relative;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background-color: #fff;
+        border-radius: 3px;
+        margin-right: 10px;
+    }
+
+    /* Style the checkmark */
+    .styled-checkboxred::after {
+        content: "";
+        position: absolute;
+        display: none;
+        left: 6px;
+        top: 2px;
+        width: 8px;
+        height: 13px;
+        border: solid red;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+
+    /* Show the checkmark when the checkbox is checked */
+    input[type="checkbox"]:checked+.styled-checkboxred::after {
+        display: block;
+    }
+</style>
+<!-- Modal for adding a new physical examination record -->
+<div class="modal fade" id="addCovid19Report" tabindex="-1" role="dialog" aria-labelledby="medicalModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <!-- Modal header with close button -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="medicalModalLabel">Onsite Clinical Cases</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!-- Modal body with form for entering physical examination data -->
+            <div class="modal-body">
+                <div class="row justify-content-center">
+                    <div class="col-md-10">
+                        <!-- Certificate container with school logo and title -->
+                        <div class="certificate-container rounded shadow p-4 mb-5 " id="frame">
+                            <div class="certificate-header d-flex justify-content-center align-items-center mb-4">
+                                <img src="../assets/img/avatars/school-logo.png" class="img-fluid logo mr-3" alt="Logo">
+                                <div class="certificate-title-container text-center">
+                                    <h2 class="certificate-title d-inline-block mb-0">Union Christian College</h2>
+                                    <p>Widdoes St., Brgy. II, San Fernando City La Union<br>
+                                        2500 Philippines<br>
+                                        URL Address: www.ucc.edu.ph</p>
+                                    <h4>OFFICE OF STUDENT AFFAIRS & SERVICES</h4>
+                                </div><span class="ml-3"></span>
+                                <img src="../assets/img/avatars/church-logo.png" class="img-fluid logo mr-3" alt="Logo">
+                            </div>
+                            <div class="certificate-content text-center">
+                                <h6>MONTHLY REPORT <input type="text" style="border: none; border-bottom: 1px solid black;text-align:center;width:100px" id="date" name="date" value="<?php
+                                                                                                                                                                                        $specificDate = date('Y-m-d');
+                                                                                                                                                                                        $formattedDate = date('M j, Y', strtotime($specificDate));
+                                                                                                                                                                                        echo $formattedDate; // Output: Feb 12, 2023
+                                                                                                                                                                                        ?>"></h6>
+                                <h6>ONSITE CLINICAL CASES</h6><br>
+
+                            </div>
+                            <br>
+                            <form id="addOnsiteClinicalCasesForm">
+                                <table class="modal-table" width="100%">
+                                    <thead>
+                                        <tr style="text-align:center;border:1px solid black;padding:10px">
+                                            <th style="text-align:center;border:1px solid black;padding:10px">ILLNESS</th>
+                                            <th style="text-align:center;border:1px solid black;padding:10px">MALE</th>
+                                            <th style="text-align:center;border:1px solid black;padding:10px">FEMALE</th>
+                                            <th sstyle="text-align:center;border:1px solid black;padding:10px">TOTAL</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                            <td><input class="form-control" value=""></input></td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+                                <div class="row mt-3">
+                                    <div class="col-md-4">
+                                        <ul>
+                                            <li>Prepared By:</li>
+                                            <li style="text-decoration: underline;">
+                                                <input type="text" class="form-control" id="nurseName" name="nurseName" placeholder="Enter Name">
+                                            </li>
+                                            <li class="font-italic">School Nurse</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-success remove-column-btn">Remove Column</button>
+                                    <button type="button" class="btn btn-success" onclick="addColumn()">Add Column</button>
+                                    <button type="submit" class="btn btn-primary" onclick="print()">Print</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Modal footer with download button and close button -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function removeColumn() {
+            var table = document.querySelector('.modal-table');
+            var rows = table.querySelectorAll('tbody');
+
+            // Loop through each row
+            rows.forEach(function(row) {
+                // Remove the last cell (td) from the row
+                var cells = row.querySelectorAll('tr');
+                if (cells.length > 0) {
+                    row.removeChild(cells[cells.length - 1]);
+                }
+            });
+        }
+
+        // Event listener for the "Remove Column" button
+        document.querySelector('.remove-column-btn').addEventListener('click', function() {
+            removeColumn();
+        });
+
+        function addColumn() {
+            var table = document.querySelector('.modal-table');
+            var tbody = table.querySelector('tbody');
+            var newRow = document.createElement('tr');
+
+            // Create four cells (td) with textareas in the new row
+            for (var i = 0; i < 4; i++) {
+                var cell = document.createElement('td');
+                var textarea = document.createElement('input');
+                textarea.classList.add('form-control');
+                cell.appendChild(textarea);
+                newRow.appendChild(cell);
+            }
+
+            // Append the new row to the tbody
+            tbody.appendChild(newRow);
+        }
+
+
+        function print() {
+            var node = document.getElementById('frame');
+
+            // Set white background color
+            node.style.backgroundColor = '#fffffff';
+
+            // Convert the DOM node to PNG image with white background color
+            domtoimage.toPng(node)
+                .then(function(dataUrl) {
+                    var img = new Image();
+                    img.src = dataUrl;
+                    // Download the image
+                    // downloadURI(dataUrl, "Physical_Exam_Record.png");
+
+                    // Log the base64 data
+                    console.log("Base64 Data:", dataUrl);
+                    printImage(img);
+                    // Save the image and checkbox state
+                    saveDataURL(dataUrl);
+                })
+                .catch(function(error) {
+                    console.error('Oops, something went wrong', error);
+                });
+            // Function to save data URL to server
+            function saveDataURL(dataUrl) {
+                var preparedByName = document.getElementById('nurseName').value;
+                $.ajax({
+                    url: 'model/onsite/upload.php',
+                    type: 'POST',
+                    data: {
+                        preparedByName: preparedByName,
+                        imageCode: dataUrl
+                    },
+                    success: function(response) {
+                        console.log("Image and name saved successfully:", response);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error saving image and name:', error);
+                    }
+                });
+            }
+
+        }
+        // Function to print image
+        function printImage(img) {
+            img.onload = function() {
+                var printWindow = window.open('', '_blank');
+                printWindow.document.open();
+                printWindow.document.write('<html><head><title>Print Image</title></head><body style="margin: 0; text-align: center;">');
+                printWindow.document.write('<img src="' + img.src + '" style="max-width: 100%; max-height: 100%;">');
+                printWindow.document.write('</body></html>');
+                printWindow.document.close();
+                printWindow.print();
+                printWindow.close();
+            };
+        }
+    </script>
